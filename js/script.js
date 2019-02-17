@@ -1,16 +1,18 @@
 //var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 // create Oscillator node
 //var oscillator = audioCtx.createOscillator();
-var frequency = 774.0
-var toneLength = 0.6;
+var frequency = 800.0
+var toneLength = 0.3;
 var i;
 var context = new AudioContext(),
     oscillator;
 var input ="";
+var space = 4000;
+var spaceBarLength = 6000;
 
 function inputMessage(){
 input = document.getElementById("newMessageInput").value;
-document.getElementById('messages').value = input;
+document.getElementById('messages').value += "\n" + input;
 
 
 
@@ -30,63 +32,71 @@ input ="";
 function makeMorseSignalRecursive(input, i){
   console.log(input, i)
 
-  currentLetter = input.charAt(i)
+  if (i == input.length){
+    currentLetter = '=';
+  } else {
+   currentLetter = input.charAt(i);
+  }
   if (currentLetter == 'a'){
-    letterLength = toneLength*(3000+5000);
+    letterLength = toneLength*(space+5000);
   } else if (currentLetter == 'b'){
-    letterLength = toneLength*(3000+9000);
+    letterLength = toneLength*(space+9000);
   } else if (currentLetter == 'c'){
-    letterLength = toneLength*(3000+11000);
+    letterLength = toneLength*(space+11000);
   } else if (currentLetter == 'd'){
-    letterLength = toneLength*(3000+7000);
+    letterLength = toneLength*(space+7000);
   } else if (currentLetter == 'e'){
-    letterLength = toneLength*(3000+1000);
+    letterLength = toneLength*(space+1000);
   } else if (currentLetter == 'f'){
-    letterLength = toneLength*(3000+9000);
+    letterLength = toneLength*(space+9000);
   } else if (currentLetter == 'g'){
-    letterLength = toneLength*(3000+9000);
+    letterLength = toneLength*(space+9000);
   } else if (currentLetter == 'h'){
-    letterLength = toneLength*(3000+3000);
+    letterLength = toneLength*(space+7000);
   } else if (currentLetter == 'i'){
-    letterLength = toneLength*(3000+11000);
+    letterLength = toneLength*(space+3000);
   } else if (currentLetter == 'j'){
-    letterLength = toneLength*(3000+13000);
+    letterLength = toneLength*(space+13000);
   } else if (currentLetter == 'k'){
-    letterLength = toneLength*(3000+9000);
+    letterLength = toneLength*(space+9000);
   } else if (currentLetter == 'l'){
-    letterLength = toneLength*(3000+9000);
+    letterLength = toneLength*(space+9000);
   } else if (currentLetter == 'm'){
-    letterLength = toneLength*(3000+7000);
+    letterLength = toneLength*(space+7000);
   } else if (currentLetter == 'n'){
-    letterLength = toneLength*(3000+5000);
+    letterLength = toneLength*(space+5000);
   } else if (currentLetter == 'o'){
-    letterLength = toneLength*(3000+11000);
+    letterLength = toneLength*(space+11000);
   } else if (currentLetter == 'p'){
-    letterLength = toneLength*(3000+11000);
+    letterLength = toneLength*(space+11000);
   } else if (currentLetter == 'q'){
-    letterLength = toneLength*(3000+13000);
+    letterLength = toneLength*(space+13000);
   } else if (currentLetter == 'r'){
-    letterLength = toneLength*(3000+7000);
+    letterLength = toneLength*(space+7000);
   } else if (currentLetter == 's'){
-    letterLength = toneLength*(3000+5000);
+    letterLength = toneLength*(space+5000);
   } else if (currentLetter == 't'){
-    letterLength = toneLength*(3000+3000);
+    letterLength = toneLength*(space+3000);
   } else if (currentLetter == 'u'){
-    letterLength = toneLength*(3000+7000);
+    letterLength = toneLength*(space+7000);
   } else if (currentLetter == 'v'){
-    letterLength = toneLength*(3000+9000);
+    letterLength = toneLength*(space+9000);
   } else if (currentLetter == 'w'){
-    letterLength = toneLength*(3000+9000);
+    letterLength = toneLength*(space+9000);
   } else if (currentLetter == 'x'){
-    letterLength = toneLength*(3000+11000);
+    letterLength = toneLength*(space+11000);
   } else if (currentLetter == 'y'){
-    letterLength = toneLength*(3000+13000);
+    letterLength = toneLength*(space+13000);
   } else if (currentLetter == 'z'){
-    letterLength = toneLength*(3000+11000);
+    letterLength = toneLength*(space+11000);
+  } else if (currentLetter == ' '){
+    letterLength = toneLength*(spaceBarLength-space);
+  } else if (currentLetter == '='){
+    letterLength = toneLength*(space+15000);
   }
 
   printLetter(currentLetter);
-  if (i >= input.length - 1){
+  if (i >= input.length){
     return;
   }
   setTimeout(() => makeMorseSignalRecursive(input, i+1), letterLength);
@@ -247,6 +257,14 @@ function printLetter(letter){
   playOscillator(context.currentTime + 4*toneLength, context.currentTime + 7*toneLength);
   playOscillator(context.currentTime + 8*toneLength, context.currentTime + 9*toneLength);
   playOscillator(context.currentTime + 10*toneLength, context.currentTime + 11*toneLength);
+  break;
+  case ' ':
+  break;
+  case '=':
+  playOscillator(context.currentTime + 0*toneLength, context.currentTime + 3*toneLength);
+  playOscillator(context.currentTime + 4*toneLength, context.currentTime + 7*toneLength);
+  playOscillator(context.currentTime + 8*toneLength, context.currentTime + 11*toneLength);
+  playOscillator(context.currentTime + 12*toneLength, context.currentTime + 15*toneLength);
   break;
   
   

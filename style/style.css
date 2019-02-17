@@ -3,9 +3,11 @@
 body{
 	background: green;
 	background-size: cover;
-	font-family: "Arial Black", Gadget, sans-serif;
-	margin-bottom:0%;
+	font-family: monospace;
+	font-size: 64px;
+	margin-bottom: 0%;
 	text-align: center;
+	color: #eee;
 }
 
 
@@ -57,6 +59,21 @@ input[type=text]{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+input[type=text]{
+	width: 600px;
+	background: #eee;
+	border: none;
+	color: #222;
+	font-size: 42px;
+	font-family: inherit;
+	padding: 8px;
+	text-align: center;
+	width: 55%;
+}
+::placeholder {
+	color: #aaa;
 }
 
 #buttonDiv{

@@ -12,10 +12,11 @@
 	</head>
 	
 	<body>	
-			<p id="messageText">Your messages are here:<p>
-					<input type="text" id="messages" ><br>
-			<p id="dialogFormMessageText">Type your messages here:<p>
-
-						<input type="text" id="newMessageInput" onchange="inputMessage(value)"><br>
+		
+			<!--<p id="messageText">Your messages are here:<p>-->
+			<input type="text" id="messages" style="display: none"><br>
+			
+			<p id="dialogFormMessageText">Send an offline message:<p>
+			<input type="text" id="newMessageInput" onchange="inputMessage(value)" autocomplete="off" ><br>
 	</body>
 </html>
